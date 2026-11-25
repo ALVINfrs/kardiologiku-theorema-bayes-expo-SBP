@@ -1,0 +1,1029 @@
+{
+ "versi": "0.1.0",
+ "status": "estimasi",
+ "catatan": "Seluruh angka prior dan likelihood adalah ESTIMASI awal untuk prototipe, disusun mengacu pada gambaran umum literatur, belum dicocokkan butir per butir ke guideline maupun divalidasi pakar. Ubah status menjadi literatur setelah diverifikasi per butir, dan tervalidasi setelah dicek pakar. Detail sitasi pada acuan wajib dicek ulang sebelum masuk laporan.",
+ "acuan": {
+  "esc_af_2020": "Hindricks G, et al. 2020 ESC Guidelines for the diagnosis and management of atrial fibrillation. Eur Heart J. 2021.",
+  "esc_svt_2019": "Brugada J, et al. 2019 ESC Guidelines for the management of patients with supraventricular tachycardia. Eur Heart J. 2020.",
+  "acc_svt_2015": "Page RL, et al. 2015 ACC/AHA/HRS Guideline for the Management of Adult Patients With Supraventricular Tachycardia. Circulation. 2016.",
+  "aha_va_2017": "Al-Khatib SM, et al. 2017 AHA/ACC/HRS Guideline for Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death. Circulation. 2018.",
+  "esc_va_2022": "Zeppenfeld K, et al. 2022 ESC Guidelines for the management of patients with ventricular arrhythmias and the prevention of sudden cardiac death. Eur Heart J. 2022.",
+  "acc_brady_2018": "Kusumoto FM, et al. 2018 ACC/AHA/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay. Circulation. 2019.",
+  "hrs_inherited_2013": "Priori SG, et al. HRS/EHRA/APHRS Expert Consensus Statement on the Diagnosis and Management of Patients with Inherited Primary Arrhythmia Syndromes. Heart Rhythm. 2013.",
+  "martis_2013": "Martis RJ, Acharya UR, Prasad H, Chua CK, Lim CM. Automated detection of atrial fibrillation using Bayesian paradigm. Knowledge-Based Systems. 2013;54:269-275. doi:10.1016/j.knosys.2013.09.016",
+  "samadova_2022": "Samadova S, Khidirov A, Suleymanova S, Mammadov R. Development of a Bayesian belief network for the diagnosis of ventricular arrhythmias. Eastern-European Journal of Enterprise Technologies. 2022. https://journals.uran.ua/eejet/article/view/263050",
+  "wulandari_2020": "Wulandari S, Kridalaksana AH, Khairina DM. Sistem Pakar Penerapan Menu Gizi pada Penderita Jantung Koroner Menggunakan Metode Teorema Bayes. Informatika Mulawarman. 2020;15(1). doi:10.30872/jim.v15i1.2716"
+ },
+ "hipotesis": [
+  {
+   "id": "normal",
+   "urutan": 1,
+   "nama": "Irama Sinus Normal",
+   "ringkas": "Irama teratur 60-100 kali/menit",
+   "deskripsi": "Impuls listrik berasal dari nodus SA dengan irama teratur 60-100 kali per menit. Keluhan berdebar tetap bisa muncul karena cemas, kafein, atau kurang tidur.",
+   "saran": "Jaga pola hidup sehat. Jika keluhan sering berulang, periksakan ke dokter.",
+   "keparahan": "rendah",
+   "prior": 0.3,
+   "acuan": []
+  },
+  {
+   "id": "sinus_takikardia",
+   "urutan": 2,
+   "nama": "Sinus Takikardia",
+   "ringkas": "Denyut di atas 100/menit, teratur, asal impuls normal",
+   "deskripsi": "Denyut di atas 100 kali per menit dengan irama teratur dan asal impuls tetap dari nodus SA. Sering merupakan respons wajar terhadap demam, cemas, nyeri, kafein, olahraga, dehidrasi, atau anemia.",
+   "saran": "Atasi pemicunya (istirahat, cukup cairan, kurangi kafein). Periksakan ke dokter bila berlangsung lama tanpa sebab jelas.",
+   "keparahan": "rendah",
+   "prior": 0.15,
+   "acuan": [
+    "acc_svt_2015"
+   ]
+  },
+  {
+   "id": "sinus_bradikardia",
+   "urutan": 3,
+   "nama": "Sinus Bradikardia",
+   "ringkas": "Denyut di bawah 60/menit, teratur",
+   "deskripsi": "Denyut di bawah 60 kali per menit dengan irama teratur. Bisa normal pada atlet atau saat tidur, tetapi perlu dievaluasi bila disertai pusing, lemas, atau pingsan.",
+   "saran": "Periksakan ke dokter bila ada pusing, mudah lelah, atau pingsan.",
+   "keparahan": "sedang",
+   "prior": 0.07,
+   "acuan": [
+    "acc_brady_2018"
+   ]
+  },
+  {
+   "id": "fibrilasi_atrium",
+   "urutan": 4,
+   "nama": "Fibrilasi Atrium",
+   "ringkas": "Denyut tidak beraturan, gelombang P tidak jelas",
+   "deskripsi": "Aktivitas listrik atrium kacau sehingga denyut ventrikel tidak beraturan dan gelombang P tidak jelas. Meningkatkan risiko pembentukan bekuan darah dan stroke.",
+   "saran": "Segera periksakan ke dokter untuk EKG dan penilaian risiko stroke.",
+   "keparahan": "tinggi",
+   "prior": 0.14,
+   "acuan": [
+    "esc_af_2020",
+    "martis_2013"
+   ]
+  },
+  {
+   "id": "atrial_flutter",
+   "urutan": 5,
+   "nama": "Atrial Flutter",
+   "ringkas": "Pola gergaji, sering cepat dan teratur",
+   "deskripsi": "Sirkuit listrik berputar di atrium menghasilkan gelombang bergerigi seperti gergaji. Denyut ventrikel sering teratur dan cepat karena hanya sebagian impuls yang diteruskan.",
+   "saran": "Periksakan ke dokter untuk EKG dan evaluasi risiko stroke.",
+   "keparahan": "tinggi",
+   "prior": 0.03,
+   "acuan": [
+    "esc_svt_2019",
+    "acc_svt_2015"
+   ]
+  },
+  {
+   "id": "svt",
+   "urutan": 6,
+   "nama": "Takikardia Supraventrikular (SVT)",
+   "ringkas": "Sangat cepat, teratur, mulai dan berhenti mendadak",
+   "deskripsi": "Irama sangat cepat (sekitar 150-250 kali per menit), teratur, dengan QRS sempit, berasal dari atas ventrikel. Khas mulai dan berhenti tiba-tiba.",
+   "saran": "Periksakan ke dokter. Jika serangan disertai nyeri dada, sesak berat, atau pingsan, segera ke IGD.",
+   "keparahan": "sedang",
+   "prior": 0.09,
+   "acuan": [
+    "esc_svt_2019",
+    "acc_svt_2015"
+   ]
+  },
+  {
+   "id": "pvc",
+   "urutan": 7,
+   "nama": "Kontraksi Prematur Ventrikel (PVC)",
+   "ringkas": "Detak ekstra dini, terasa jantung loncat",
+   "deskripsi": "Detak tambahan yang muncul lebih awal dari ventrikel dengan QRS lebar, biasanya diikuti jeda. Terasa seperti jantung loncat. Sering jinak, tetapi perlu dievaluasi bila sangat sering.",
+   "saran": "Kurangi kafein dan stres. Periksakan ke dokter bila sering atau disertai pusing dan sesak.",
+   "keparahan": "rendah",
+   "prior": 0.15,
+   "acuan": [
+    "aha_va_2017",
+    "esc_va_2022",
+    "samadova_2022"
+   ]
+  },
+  {
+   "id": "vt",
+   "urutan": 8,
+   "nama": "Takikardia Ventrikel (VT)",
+   "ringkas": "Cepat, QRS lebar, bisa mengancam nyawa",
+   "deskripsi": "Irama cepat yang berasal dari ventrikel dengan QRS lebar. Dapat menurunkan tekanan darah, menyebabkan pingsan, dan berkembang menjadi henti jantung.",
+   "saran": "Kondisi darurat. Segera ke IGD atau hubungi 119/112.",
+   "keparahan": "darurat",
+   "prior": 0.02,
+   "acuan": [
+    "aha_va_2017",
+    "esc_va_2022",
+    "samadova_2022"
+   ]
+  },
+  {
+   "id": "wpw",
+   "urutan": 9,
+   "nama": "Sindrom Wolff-Parkinson-White (WPW)",
+   "ringkas": "PR pendek dan gelombang delta",
+   "deskripsi": "Ada jalur tambahan (berkas Kent) antara atrium dan ventrikel yang melewati nodus AV sehingga ventrikel terangsang lebih awal. EKG menunjukkan PR pendek dan gelombang delta, dan kondisi ini memudahkan terjadinya SVT.",
+   "saran": "Periksakan ke dokter spesialis jantung untuk evaluasi dan tata laksana.",
+   "keparahan": "tinggi",
+   "prior": 0.01,
+   "acuan": [
+    "esc_svt_2019",
+    "acc_svt_2015"
+   ]
+  },
+  {
+   "id": "long_qt",
+   "urutan": 10,
+   "nama": "Sindrom Long QT",
+   "ringkas": "QTc memanjang, risiko pingsan dan aritmia berbahaya",
+   "deskripsi": "Fase pemulihan listrik ventrikel memanjang (QTc memanjang). Bisa bawaan atau akibat obat dan gangguan elektrolit, dan berisiko memicu torsades de pointes.",
+   "saran": "Periksakan ke dokter spesialis jantung. Hindari obat pemicu sesuai arahan dokter.",
+   "keparahan": "tinggi",
+   "prior": 0.01,
+   "acuan": [
+    "hrs_inherited_2013",
+    "esc_va_2022"
+   ]
+  },
+  {
+   "id": "brugada",
+   "urutan": 11,
+   "nama": "Sindrom Brugada",
+   "ringkas": "Elevasi ST pola coved di V1-V2",
+   "deskripsi": "Kelainan kanal natrium yang ditandai elevasi segmen ST berbentuk coved di sadapan V1-V2. Berisiko aritmia ventrikel dan henti jantung mendadak, sering dipicu demam atau muncul saat tidur.",
+   "saran": "Periksakan ke dokter spesialis jantung sesegera mungkin, terutama bila ada pingsan atau riwayat keluarga meninggal mendadak.",
+   "keparahan": "tinggi",
+   "prior": 0.005,
+   "acuan": [
+    "hrs_inherited_2013",
+    "esc_va_2022"
+   ]
+  },
+  {
+   "id": "blok_av",
+   "urutan": 12,
+   "nama": "Blok Atrioventrikular (Blok AV)",
+   "ringkas": "Hantaran atrium ke ventrikel terhambat",
+   "deskripsi": "Impuls dari atrium terhambat saat melewati nodus AV. EKG dapat menunjukkan PR memanjang atau gelombang P yang tidak diikuti QRS, dengan denyut lambat dan risiko pingsan.",
+   "saran": "Periksakan ke dokter, terutama bila ada pusing atau pingsan.",
+   "keparahan": "tinggi",
+   "prior": 0.025,
+   "acuan": [
+    "acc_brady_2018"
+   ]
+  }
+ ],
+ "variabel": [
+  {
+   "id": "bpm",
+   "kelompok": "denyut",
+   "tipe": "kategori",
+   "pertanyaan": "Berapa kira-kira denyut jantung (nadi) per menit?",
+   "bantuan": "Hitung nadi di pergelangan tangan selama 15 detik, lalu kalikan 4. Atau gunakan fitur Tap Nadi.",
+   "nilai": [
+    {
+     "id": "kurang_60",
+     "label": "Kurang dari 60"
+    },
+    {
+     "id": "normal_60_100",
+     "label": "60 - 100"
+    },
+    {
+     "id": "lebih_100",
+     "label": "Lebih dari 100"
+    }
+   ],
+   "p": [
+    [
+     0.05,
+     0.85,
+     0.1
+    ],
+    [
+     0.01,
+     0.02,
+     0.97
+    ],
+    [
+     0.95,
+     0.04,
+     0.01
+    ],
+    [
+     0.05,
+     0.35,
+     0.6
+    ],
+    [
+     0.05,
+     0.25,
+     0.7
+    ],
+    [
+     0.01,
+     0.04,
+     0.95
+    ],
+    [
+     0.08,
+     0.77,
+     0.15
+    ],
+    [
+     0.02,
+     0.08,
+     0.9
+    ],
+    [
+     0.03,
+     0.62,
+     0.35
+    ],
+    [
+     0.15,
+     0.65,
+     0.2
+    ],
+    [
+     0.1,
+     0.75,
+     0.15
+    ],
+    [
+     0.7,
+     0.27,
+     0.03
+    ]
+   ]
+  },
+  {
+   "id": "ritme",
+   "kelompok": "denyut",
+   "tipe": "kategori",
+   "pertanyaan": "Bagaimana keteraturan denyutnya?",
+   "bantuan": null,
+   "nilai": [
+    {
+     "id": "teratur",
+     "label": "Teratur"
+    },
+    {
+     "id": "loncat",
+     "label": "Teratur tapi sesekali \"loncat\""
+    },
+    {
+     "id": "tidak_teratur",
+     "label": "Tidak beraturan"
+    }
+   ],
+   "p": [
+    [
+     0.88,
+     0.09,
+     0.03
+    ],
+    [
+     0.93,
+     0.05,
+     0.02
+    ],
+    [
+     0.9,
+     0.07,
+     0.03
+    ],
+    [
+     0.03,
+     0.12,
+     0.85
+    ],
+    [
+     0.55,
+     0.15,
+     0.3
+    ],
+    [
+     0.93,
+     0.04,
+     0.03
+    ],
+    [
+     0.1,
+     0.82,
+     0.08
+    ],
+    [
+     0.8,
+     0.1,
+     0.1
+    ],
+    [
+     0.82,
+     0.08,
+     0.1
+    ],
+    [
+     0.75,
+     0.15,
+     0.1
+    ],
+    [
+     0.75,
+     0.1,
+     0.15
+    ],
+    [
+     0.55,
+     0.35,
+     0.1
+    ]
+   ]
+  },
+  {
+   "id": "onset_mendadak",
+   "kelompok": "denyut",
+   "tipe": "biner",
+   "pertanyaan": "Apakah debarannya mulai dan berhenti secara tiba-tiba?",
+   "bantuan": null,
+   "pYa": [
+    0.03,
+    0.05,
+    0.02,
+    0.2,
+    0.25,
+    0.9,
+    0.1,
+    0.35,
+    0.7,
+    0.1,
+    0.05,
+    0.05
+   ]
+  },
+  {
+   "id": "berdebar",
+   "kelompok": "gejala",
+   "tipe": "biner",
+   "pertanyaan": "Merasa jantung berdebar?",
+   "bantuan": null,
+   "pYa": [
+    0.35,
+    0.75,
+    0.15,
+    0.8,
+    0.75,
+    0.9,
+    0.8,
+    0.7,
+    0.75,
+    0.3,
+    0.15,
+    0.2
+   ]
+  },
+  {
+   "id": "pusing",
+   "kelompok": "gejala",
+   "tipe": "biner",
+   "pertanyaan": "Pusing atau kepala terasa ringan?",
+   "bantuan": null,
+   "pYa": [
+    0.15,
+    0.3,
+    0.45,
+    0.4,
+    0.4,
+    0.45,
+    0.25,
+    0.65,
+    0.3,
+    0.4,
+    0.25,
+    0.65
+   ]
+  },
+  {
+   "id": "sesak",
+   "kelompok": "gejala",
+   "tipe": "biner",
+   "pertanyaan": "Sesak napas?",
+   "bantuan": null,
+   "pYa": [
+    0.08,
+    0.2,
+    0.2,
+    0.45,
+    0.4,
+    0.35,
+    0.15,
+    0.55,
+    0.2,
+    0.1,
+    0.1,
+    0.3
+   ]
+  },
+  {
+   "id": "nyeri_dada",
+   "kelompok": "gejala",
+   "tipe": "biner",
+   "pertanyaan": "Nyeri atau rasa tertekan di dada?",
+   "bantuan": null,
+   "pYa": [
+    0.05,
+    0.15,
+    0.1,
+    0.25,
+    0.25,
+    0.3,
+    0.12,
+    0.45,
+    0.15,
+    0.05,
+    0.1,
+    0.15
+   ]
+  },
+  {
+   "id": "pingsan",
+   "kelompok": "gejala",
+   "tipe": "biner",
+   "pertanyaan": "Pernah pingsan atau hampir pingsan?",
+   "bantuan": null,
+   "pYa": [
+    0.02,
+    0.03,
+    0.15,
+    0.08,
+    0.08,
+    0.1,
+    0.03,
+    0.5,
+    0.1,
+    0.45,
+    0.35,
+    0.4
+   ]
+  },
+  {
+   "id": "lemas",
+   "kelompok": "gejala",
+   "tipe": "biner",
+   "pertanyaan": "Mudah lelah atau lemas?",
+   "bantuan": null,
+   "pYa": [
+    0.12,
+    0.25,
+    0.45,
+    0.5,
+    0.4,
+    0.25,
+    0.15,
+    0.45,
+    0.15,
+    0.15,
+    0.1,
+    0.5
+   ]
+  },
+  {
+   "id": "kafein_stres",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Banyak minum kafein, atau sedang stres/kurang tidur?",
+   "bantuan": null,
+   "pYa": [
+    0.3,
+    0.6,
+    0.1,
+    0.35,
+    0.2,
+    0.35,
+    0.55,
+    0.1,
+    0.3,
+    0.15,
+    0.1,
+    0.1
+   ]
+  },
+  {
+   "id": "pemicu_emosi_olahraga",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Keluhan muncul saat emosi kuat, olahraga, atau suara mengagetkan?",
+   "bantuan": null,
+   "pYa": [
+    0.1,
+    0.35,
+    0.05,
+    0.12,
+    0.1,
+    0.2,
+    0.2,
+    0.3,
+    0.2,
+    0.6,
+    0.08,
+    0.1
+   ]
+  },
+  {
+   "id": "pemicu_demam_tidur",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Keluhan muncul saat demam atau saat tidur malam?",
+   "bantuan": null,
+   "pYa": [
+    0.05,
+    0.2,
+    0.05,
+    0.08,
+    0.05,
+    0.05,
+    0.05,
+    0.1,
+    0.05,
+    0.08,
+    0.55,
+    0.08
+   ]
+  },
+  {
+   "id": "riwayat_jantung",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Punya riwayat penyakit jantung, hipertensi, atau gagal jantung?",
+   "bantuan": null,
+   "pYa": [
+    0.1,
+    0.15,
+    0.2,
+    0.55,
+    0.5,
+    0.15,
+    0.35,
+    0.6,
+    0.05,
+    0.08,
+    0.05,
+    0.4
+   ]
+  },
+  {
+   "id": "usia_lanjut",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Usia 65 tahun atau lebih?",
+   "bantuan": null,
+   "pYa": [
+    0.15,
+    0.15,
+    0.3,
+    0.6,
+    0.5,
+    0.15,
+    0.25,
+    0.35,
+    0.05,
+    0.1,
+    0.08,
+    0.5
+   ]
+  },
+  {
+   "id": "obat_elektrolit",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Sedang minum obat tertentu, atau kalium rendah (muntah/diare berkepanjangan)?",
+   "bantuan": null,
+   "pYa": [
+    0.08,
+    0.1,
+    0.1,
+    0.12,
+    0.1,
+    0.06,
+    0.2,
+    0.2,
+    0.03,
+    0.45,
+    0.12,
+    0.15
+   ]
+  },
+  {
+   "id": "riwayat_keluarga",
+   "kelompok": "risiko",
+   "tipe": "biner",
+   "pertanyaan": "Ada keluarga yang meninggal mendadak di usia muda atau punya kelainan irama jantung?",
+   "bantuan": null,
+   "pYa": [
+    0.03,
+    0.03,
+    0.03,
+    0.1,
+    0.05,
+    0.05,
+    0.05,
+    0.15,
+    0.08,
+    0.35,
+    0.4,
+    0.05
+   ]
+  },
+  {
+   "id": "gelombang_p",
+   "kelompok": "ekg",
+   "tipe": "kategori",
+   "pertanyaan": "Gelombang P pada EKG",
+   "bantuan": null,
+   "nilai": [
+    {
+     "id": "normal",
+     "label": "Normal (ada, sebelum QRS)"
+    },
+    {
+     "id": "tidak_ada",
+     "label": "Tidak ada / tidak jelas"
+    },
+    {
+     "id": "gergaji",
+     "label": "Pola gergaji (flutter)"
+    }
+   ],
+   "p": [
+    [
+     0.97,
+     0.02,
+     0.01
+    ],
+    [
+     0.97,
+     0.02,
+     0.01
+    ],
+    [
+     0.97,
+     0.02,
+     0.01
+    ],
+    [
+     0.03,
+     0.95,
+     0.02
+    ],
+    [
+     0.05,
+     0.1,
+     0.85
+    ],
+    [
+     0.5,
+     0.49,
+     0.01
+    ],
+    [
+     0.88,
+     0.1,
+     0.02
+    ],
+    [
+     0.5,
+     0.49,
+     0.01
+    ],
+    [
+     0.92,
+     0.07,
+     0.01
+    ],
+    [
+     0.95,
+     0.04,
+     0.01
+    ],
+    [
+     0.93,
+     0.06,
+     0.01
+    ],
+    [
+     0.95,
+     0.04,
+     0.01
+    ]
+   ]
+  },
+  {
+   "id": "qrs",
+   "kelompok": "ekg",
+   "tipe": "kategori",
+   "pertanyaan": "Lebar kompleks QRS",
+   "bantuan": null,
+   "nilai": [
+    {
+     "id": "sempit",
+     "label": "Sempit (kurang dari 120 ms)"
+    },
+    {
+     "id": "lebar",
+     "label": "Lebar (120 ms atau lebih)"
+    }
+   ],
+   "p": [
+    [
+     0.95,
+     0.05
+    ],
+    [
+     0.95,
+     0.05
+    ],
+    [
+     0.95,
+     0.05
+    ],
+    [
+     0.88,
+     0.12
+    ],
+    [
+     0.9,
+     0.1
+    ],
+    [
+     0.9,
+     0.1
+    ],
+    [
+     0.8,
+     0.2
+    ],
+    [
+     0.03,
+     0.97
+    ],
+    [
+     0.55,
+     0.45
+    ],
+    [
+     0.92,
+     0.08
+    ],
+    [
+     0.8,
+     0.2
+    ],
+    [
+     0.75,
+     0.25
+    ]
+   ]
+  },
+  {
+   "id": "pr",
+   "kelompok": "ekg",
+   "tipe": "kategori",
+   "pertanyaan": "Interval PR",
+   "bantuan": "Isi hanya jika PR dapat diukur.",
+   "nilai": [
+    {
+     "id": "pendek",
+     "label": "Pendek (kurang dari 120 ms)"
+    },
+    {
+     "id": "normal",
+     "label": "Normal (120 - 200 ms)"
+    },
+    {
+     "id": "panjang",
+     "label": "Panjang (lebih dari 200 ms)"
+    }
+   ],
+   "p": [
+    [
+     0.02,
+     0.97,
+     0.01
+    ],
+    [
+     0.02,
+     0.97,
+     0.01
+    ],
+    [
+     0.02,
+     0.93,
+     0.05
+    ],
+    [
+     0.03,
+     0.94,
+     0.03
+    ],
+    [
+     0.03,
+     0.92,
+     0.05
+    ],
+    [
+     0.05,
+     0.9,
+     0.05
+    ],
+    [
+     0.02,
+     0.96,
+     0.02
+    ],
+    [
+     0.05,
+     0.9,
+     0.05
+    ],
+    [
+     0.9,
+     0.09,
+     0.01
+    ],
+    [
+     0.02,
+     0.96,
+     0.02
+    ],
+    [
+     0.02,
+     0.83,
+     0.15
+    ],
+    [
+     0.01,
+     0.2,
+     0.79
+    ]
+   ]
+  },
+  {
+   "id": "qtc",
+   "kelompok": "ekg",
+   "tipe": "kategori",
+   "pertanyaan": "Interval QTc",
+   "bantuan": null,
+   "nilai": [
+    {
+     "id": "normal",
+     "label": "Normal"
+    },
+    {
+     "id": "memanjang",
+     "label": "Memanjang (pria > 450 ms, wanita > 460 ms)"
+    }
+   ],
+   "p": [
+    [
+     0.96,
+     0.04
+    ],
+    [
+     0.94,
+     0.06
+    ],
+    [
+     0.93,
+     0.07
+    ],
+    [
+     0.92,
+     0.08
+    ],
+    [
+     0.93,
+     0.07
+    ],
+    [
+     0.95,
+     0.05
+    ],
+    [
+     0.9,
+     0.1
+    ],
+    [
+     0.85,
+     0.15
+    ],
+    [
+     0.95,
+     0.05
+    ],
+    [
+     0.05,
+     0.95
+    ],
+    [
+     0.93,
+     0.07
+    ],
+    [
+     0.88,
+     0.12
+    ]
+   ]
+  },
+  {
+   "id": "st_coved",
+   "kelompok": "ekg",
+   "tipe": "biner",
+   "pertanyaan": "Ada elevasi ST berpola melengkung (coved) di V1-V2?",
+   "bantuan": null,
+   "pYa": [
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.03,
+    0.01,
+    0.02,
+    0.9,
+    0.01
+   ]
+  },
+  {
+   "id": "delta",
+   "kelompok": "ekg",
+   "tipe": "biner",
+   "pertanyaan": "Ada gelombang delta (awal QRS melandai)?",
+   "bantuan": null,
+   "pYa": [
+    0.01,
+    0.01,
+    0.01,
+    0.02,
+    0.01,
+    0.05,
+    0.01,
+    0.01,
+    0.9,
+    0.01,
+    0.01,
+    0.01
+   ]
+  },
+  {
+   "id": "p_tanpa_qrs",
+   "kelompok": "ekg",
+   "tipe": "biner",
+   "pertanyaan": "Ada gelombang P yang tidak diikuti QRS?",
+   "bantuan": null,
+   "pYa": [
+    0.01,
+    0.01,
+    0.03,
+    0.01,
+    0.15,
+    0.02,
+    0.02,
+    0.03,
+    0.01,
+    0.02,
+    0.02,
+    0.85
+   ]
+  },
+  {
+   "id": "detak_prematur_lebar",
+   "kelompok": "ekg",
+   "tipe": "biner",
+   "pertanyaan": "Ada detak prematur dengan QRS lebar?",
+   "bantuan": null,
+   "pYa": [
+    0.03,
+    0.03,
+    0.04,
+    0.08,
+    0.05,
+    0.05,
+    0.95,
+    0.15,
+    0.03,
+    0.08,
+    0.05,
+    0.05
+   ]
+  }
+ ]
+}
