@@ -8,7 +8,7 @@ Centang saat task **selesai dan DoD terpenuhi**. Format catatan: `YYYY-MM-DD, 1-
 - [x] **T-002** Tema, NativeWind, dan UI kit — 2026-11-25, NativeWind 4.2.7 + Tailwind 3.4.19, 13 komponen DESIGN §6 + galeri dev, typecheck/lint/test hijau (12 tes), cek:kelas hijau + tes negatif lolos, bundle Android 6.6 MB. File: src/ui/theme.ts, themeVars.ts, fonts.ts, components/, app/dev/galeri.tsx, tailwind.config.js, scripts/cek-kelas.ts. (Tes komponen di Jest+jest-expo, DEC-32; tes logika murni tetap Vitest.)
 - [x] **T-003** Skeleton navigasi — 2026-11-25, semua rute §6.2 sebagai placeholder + tab 5 (ikon DESIGN §11), gerbang stub redirect ke tabs, typecheck/lint/test hijau, bundle Android sukses. File: app/(tabs)/_layout.tsx, app/index.tsx, app/**/… (31 berkas rute), src/ui/components/LayarPlaceholder.tsx. (Cek tiap rute terbuka tanpa crash menyusul di gerbang Fase 0 via Expo Go.)
 - [x] **T-004** Tipe dan utilitas — 2026-11-25, kontrak §9.4 di `src/engine/types.ts`, rng mulberry32, format id-ID, rbac.can + matriks (DEC-33), strings kanonik §12; 24 tes hijau total. File: src/engine/types.ts, src/lib/{rng,format,rbac}.ts, src/content/strings.ts.
-- [ ] **T-005** Motion kit
+- [x] **T-005** Motion kit — 2026-11-25, preset DESIGN §16 (durasi ≤400 ms, jejak 600–900, hitung-naik 700, pegas bar 18/160), TraceDraw/CountUp/PressScale/Stagger + useReduceMotion (sistem + override manual); galeri menampilkan tiap gerak + saklar reduceMotion; 34 tes hijau total. File: src/ui/motion.ts, src/ui/useReduceMotion.ts, src/ui/components/motion.tsx, jest.setup.js, jest.resolver.js.
 - [ ] **T-006** Logo, splash, dan ikon aplikasi
 
 ## FASE 1: Deteksi inti

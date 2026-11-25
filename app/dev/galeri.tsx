@@ -7,6 +7,12 @@ import { Card } from '../../src/ui/components/Card';
 import { Chip } from '../../src/ui/components/Chip';
 import { Dialog } from '../../src/ui/components/Dialog';
 import { EmptyState } from '../../src/ui/components/EmptyState';
+import {
+  CountUp,
+  PressScale,
+  Stagger,
+  TraceDraw,
+} from '../../src/ui/components/motion';
 import { ProbBar } from '../../src/ui/components/ProbBar';
 import { SectionTitle } from '../../src/ui/components/SectionTitle';
 import { SeverityBadge } from '../../src/ui/components/SeverityBadge';
@@ -17,6 +23,8 @@ import {
   TriToggle,
   type NilaiTriToggle,
 } from '../../src/ui/components/TriToggle';
+import { formatPersen } from '../../src/lib/format';
+import { usePengaturanGerak } from '../../src/store/pengaturan';
 
 function Seksi({
   judul,
@@ -40,6 +48,8 @@ export default function Galeri() {
   const [chipAktif, setChipAktif] = useState(true);
   const [dialogTerlihat, setDialogTerlihat] = useState(false);
   const [toastTerlihat, setToastTerlihat] = useState(false);
+  const manualGerak = usePengaturanGerak((s) => s.manual);
+  const setManualGerak = usePengaturanGerak((s) => s.setManual);
 
   return (
     <ScrollView className="flex-1 bg-paper px-4 pb-8 pt-12">
@@ -160,6 +170,54 @@ export default function Galeri() {
           onPress={() => setToastTerlihat(true)}
           varian="secondary"
         />
+      </Seksi>
+
+      <Seksi judul="Gerak (DESIGN §16)">
+        <View className="flex-row gap-2">
+          <Button
+            label="Gerak: Sistem"
+            onPress={() => setManualGerak(null)}
+            varian={manualGerak === null ? 'primary' : 'secondary'}
+          />
+          <Button
+            label="Gerak: Penuh"
+            onPress={() => setManualGerak(false)}
+            varian={manualGerak === false ? 'primary' : 'secondary'}
+          />
+          <Button
+            label="Gerak: Kurangi"
+            onPress={() => setManualGerak(true)}
+            varian={manualGerak === true ? 'primary' : 'secondary'}
+          />
+        </View>
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Jejak EKG (tulis-jejak):
+        </Text>
+        <TraceDraw />
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Hitung-naik:
+        </Text>
+        <CountUp nilai={81.9} format={formatPersen} />
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Masuk berurutan:
+        </Text>
+        <Stagger>
+          <Text className="font-sans text-[15px] leading-[22px] text-ink">
+            Item satu
+          </Text>
+          <Text className="font-sans text-[15px] leading-[22px] text-ink">
+            Item dua
+          </Text>
+          <Text className="font-sans text-[15px] leading-[22px] text-ink">
+            Item tiga
+          </Text>
+        </Stagger>
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Tekan (skala 0,98 + haptic):
+        </Text>
+        <PressScale>
+          <Chip label="Tekan chip ini" onPress={() => {}} />
+        </PressScale>
       </Seksi>
 
       <Dialog
