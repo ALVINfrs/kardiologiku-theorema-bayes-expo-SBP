@@ -1,9 +1,6 @@
-import { Text, View } from 'react-native';
+import { Redirect } from 'expo-router';
 
-export default function Beranda() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Kardiologiku</Text>
-    </View>
-  );
+export default function Gerbang() {
+  // Stub T-003 — gerbang sesi sebenarnya di T-111/T-201.
+  return <Redirect href="/(tabs)" />;
 }

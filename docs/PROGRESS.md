@@ -6,7 +6,7 @@ Centang saat task **selesai dan DoD terpenuhi**. Format catatan: `YYYY-MM-DD, 1-
 ## FASE 0: Setup dan fondasi
 - [x] **T-001** Inisialisasi proyek — 2026-11-25, scaffold Expo SDK 58 + TS strict + eslint/prettier/vitest, typecheck/lint/test hijau, bundle Android sukses (2.8 MB). File: package.json, app.json, app/, src/lib/__tests__/smoke.test.ts, vitest.config.mts, eslint.config.js. (Cek tampil di HP pemilik menyusul di gerbang Fase 0.)
 - [x] **T-002** Tema, NativeWind, dan UI kit — 2026-11-25, NativeWind 4.2.7 + Tailwind 3.4.19, 13 komponen DESIGN §6 + galeri dev, typecheck/lint/test hijau (12 tes), cek:kelas hijau + tes negatif lolos, bundle Android 6.6 MB. File: src/ui/theme.ts, themeVars.ts, fonts.ts, components/, app/dev/galeri.tsx, tailwind.config.js, scripts/cek-kelas.ts. (Tes komponen di Jest+jest-expo, DEC-32; tes logika murni tetap Vitest.)
-- [ ] **T-003** Skeleton navigasi
+- [x] **T-003** Skeleton navigasi — 2026-11-25, semua rute §6.2 sebagai placeholder + tab 5 (ikon DESIGN §11), gerbang stub redirect ke tabs, typecheck/lint/test hijau, bundle Android sukses. File: app/(tabs)/_layout.tsx, app/index.tsx, app/**/… (31 berkas rute), src/ui/components/LayarPlaceholder.tsx. (Cek tiap rute terbuka tanpa crash menyusul di gerbang Fase 0 via Expo Go.)
 - [ ] **T-004** Tipe dan utilitas
 - [ ] **T-005** Motion kit
 - [ ] **T-006** Logo, splash, dan ikon aplikasi

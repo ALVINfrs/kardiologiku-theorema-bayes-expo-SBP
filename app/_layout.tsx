@@ -33,7 +33,9 @@ export default function RootLayout() {
       style={varsTema(colorScheme === 'dark' ? 'dark' : 'light')}
       className="flex-1 bg-paper"
     >
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
     </View>
   );
 }
