@@ -1,13 +1,6 @@
 import { Text, View } from 'react-native';
+import { formatPersen, formatPersenAngka } from '../../lib/format';
 import { petaKeparahan, type Keparahan } from '../theme';
-
-export function formatPersenAngka(persen: number): string {
-  return persen.toLocaleString('id-ID', { maximumFractionDigits: 1 });
-}
-
-export function formatPersen(persen: number): string {
-  return `${formatPersenAngka(persen)}%`;
-}
 
 interface ProbBarProps {
   nama: string;
