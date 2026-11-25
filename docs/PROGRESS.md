@@ -9,7 +9,7 @@ Centang saat task **selesai dan DoD terpenuhi**. Format catatan: `YYYY-MM-DD, 1-
 - [x] **T-003** Skeleton navigasi — 2026-11-25, semua rute §6.2 sebagai placeholder + tab 5 (ikon DESIGN §11), gerbang stub redirect ke tabs, typecheck/lint/test hijau, bundle Android sukses. File: app/(tabs)/_layout.tsx, app/index.tsx, app/**/… (31 berkas rute), src/ui/components/LayarPlaceholder.tsx. (Cek tiap rute terbuka tanpa crash menyusul di gerbang Fase 0 via Expo Go.)
 - [x] **T-004** Tipe dan utilitas — 2026-11-25, kontrak §9.4 di `src/engine/types.ts`, rng mulberry32, format id-ID, rbac.can + matriks (DEC-33), strings kanonik §12; 24 tes hijau total. File: src/engine/types.ts, src/lib/{rng,format,rbac}.ts, src/content/strings.ts.
 - [x] **T-005** Motion kit — 2026-11-25, preset DESIGN §16 (durasi ≤400 ms, jejak 600–900, hitung-naik 700, pegas bar 18/160), TraceDraw/CountUp/PressScale/Stagger + useReduceMotion (sistem + override manual); galeri menampilkan tiap gerak + saklar reduceMotion; 34 tes hijau total. File: src/ui/motion.ts, src/ui/useReduceMotion.ts, src/ui/components/motion.tsx, jest.setup.js, jest.resolver.js.
-- [ ] **T-006** Logo, splash, dan ikon aplikasi
+- [x] **T-006** Logo, splash, dan ikon aplikasi — 2026-11-25, LogoMark (terang/gelap/mono, 24/72), LogoHero (gambar AI + jejak Skia + denyut), LogoLockup, Splash §17.5 (≤1,6 dtk / 600 ms statis), ikon app + adaptive + monochrome di app.json; ATTRIBUTION.md lengkap (gambar dilabeli AI); 39 tes hijau total. File: src/ui/components/{Logo,JejakEkgSkia}.tsx, assets/logo/jantung-hero.webp, assets/icon-*.png, app.json, app/_layout.tsx.
 
 ## FASE 1: Deteksi inti
 - [ ] **T-101** Modul seed KB + validator

@@ -4,6 +4,13 @@
 
 export type TemaMode = 'light' | 'dark';
 
+// Warna tanda vektor gelap — dari docs/assets/logo/kardiologiku-mark-dark.svg
+// (bukan token tema light/dark; dipakai saat varian="gelap").
+export const WARNA_TANDA_GELAP = {
+  jantung: '#FF6B81',
+  jejak: '#E8EDF4',
+} as const;
+
 export interface TokenWarna {
   paper: string;
   gridSmall: string;

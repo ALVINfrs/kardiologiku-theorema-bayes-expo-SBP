@@ -25,6 +25,8 @@ import {
 } from '../../src/ui/components/TriToggle';
 import { formatPersen } from '../../src/lib/format';
 import { usePengaturanGerak } from '../../src/store/pengaturan';
+import { LogoHero, LogoLockup, LogoMark } from '../../src/ui/components/Logo';
+import { useTema } from '../../src/ui/useTema';
 
 function Seksi({
   judul,
@@ -44,6 +46,7 @@ function Seksi({
 /** Galeri dev — hanya mode dev (T-002). Menampilkan semua komponen + state. */
 export default function Galeri() {
   const { setColorScheme } = useColorScheme();
+  const tema = useTema();
   const [tri, setTri] = useState<NilaiTriToggle>('tidak-tahu');
   const [chipAktif, setChipAktif] = useState(true);
   const [dialogTerlihat, setDialogTerlihat] = useState(false);
@@ -170,6 +173,26 @@ export default function Galeri() {
           onPress={() => setToastTerlihat(true)}
           varian="secondary"
         />
+      </Seksi>
+
+      <Seksi judul="Logo (DESIGN §17)">
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Tanda vektor 24 / 72:
+        </Text>
+        <View className="flex-row items-end gap-4">
+          <LogoMark ukuran={24} />
+          <LogoMark ukuran={72} />
+          <LogoMark ukuran={48} varian="mono" warna={tema.ink} />
+        </View>
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Logo hero (gambar AI + jejak Skia + denyut):
+        </Text>
+        <LogoHero tinggi={200} />
+        <Text className="font-sans text-[15px] leading-[22px] text-ink">
+          Lockup:
+        </Text>
+        <LogoLockup />
+        <LogoLockup vertikal />
       </Seksi>
 
       <Seksi judul="Gerak (DESIGN §16)">

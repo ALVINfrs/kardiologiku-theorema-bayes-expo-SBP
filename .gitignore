@@ -47,3 +47,6 @@ example
 .env.*
 !.env.example
 *.log
+
+# Scratch lokal (bukan bagian repo)
+.tmp/

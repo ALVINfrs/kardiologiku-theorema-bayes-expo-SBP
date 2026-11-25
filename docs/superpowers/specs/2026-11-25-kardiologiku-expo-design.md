@@ -41,6 +41,11 @@ sama dengan engine acuan, atau gambar tanpa lisensi terverifikasi.
    Bila tidak bisa diunduh/diverifikasi: berhenti di bagian itu, pakai
    varian `mark` (vektor, sudah ada di `docs/assets/logo/`) sebagai logo
    utama, dan laporkan ke pemilik.
+   **DIUBAH pemilik 25 Nov 10:50 WIB, diklarifikasi 10:51 WIB (DEC-35):**
+   final = satu gambar jantung realistis **hasil AI**
+   (`assets/logo/jantung-hero.webp`, 660×660, 41 KB, tanpa garis EKG di
+   dalam gambar) + **jejak EKG animasi Skia di depannya**. Blausen tidak
+   dipakai; file hasil olahannya sudah dihapus.
 5. **Gambar kuis/artikel:** **generate** (ilustrasi konsisten, tanpa risiko
    lisensi). Tetap patuh DEC-22: maks 12 gambar berlisensi + ilustrasi kode.
 

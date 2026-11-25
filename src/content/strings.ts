@@ -21,3 +21,6 @@ export const KUIS_NOTE =
   'Kasus dibangkitkan dari basis pengetahuan (data sintetis), bukan pasien nyata.';
 
 export const LABEL_HASIL_UTAMA = 'Kemungkinan terbesar';
+
+/** Atribusi logo hero (DESIGN §17.2, DEC-35): gambar jantung dibuat dengan AI. */
+export const ATRIBUSI_JANTUNG = 'Gambar jantung dibuat dengan AI.';

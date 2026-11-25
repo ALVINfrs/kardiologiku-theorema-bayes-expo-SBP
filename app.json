@@ -1,1 +1,35 @@
-{"expo":{"experiments":{"typedRoutes":true},"icon":"./assets/images/splash-icon.png","name":"Kardiologiku","orientation":"portrait","plugins":["expo-router",["expo-splash-screen",{"backgroundColor":"#FBF1EE","image":"./assets/images/splash-icon.png","imageWidth":76}]],"scheme":"kardiologiku","slug":"kardiologiku","userInterfaceStyle":"automatic","version":"1.0.0"}}
+{
+  "expo": {
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FBF1EE",
+        "foregroundImage": "./assets/icon-foreground-1024.png",
+        "monochromeImage": "./assets/icon-monochrome-1024.png"
+      }
+    },
+    "experiments": { "typedRoutes": true },
+    "icon": "./assets/icon-1024.png",
+    "name": "Kardiologiku",
+    "orientation": "portrait",
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FBF1EE",
+          "image": "./assets/icon-1024.png",
+          "imageWidth": 200
+        }
+      ]
+    ],
+    "scheme": "kardiologiku",
+    "slug": "kardiologiku",
+    "splash": {
+      "backgroundColor": "#FBF1EE",
+      "image": "./assets/icon-1024.png",
+      "resizeMode": "contain"
+    },
+    "userInterfaceStyle": "automatic",
+    "version": "1.0.0"
+  }
+}
