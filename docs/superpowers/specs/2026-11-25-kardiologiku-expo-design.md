@@ -46,6 +46,9 @@ sama dengan engine acuan, atau gambar tanpa lisensi terverifikasi.
    (`assets/logo/jantung-hero.webp`, 660×660, 41 KB, tanpa garis EKG di
    dalam gambar) + **jejak EKG animasi Skia di depannya**. Blausen tidak
    dipakai; file hasil olahannya sudah dihapus.
+   **DIUBAH LAGI pemilik 25 Nov 11:04 WIB (DEC-37, final):** satu gambar
+   jadi — jantung realistis hasil AI **dengan garis irama EKG menyatu di
+   dalam gambar** (660×660, 47 KB); jejak Skia dicopot dari hero.
 5. **Gambar kuis/artikel:** **generate** (ilustrasi konsisten, tanpa risiko
    lisensi). Tetap patuh DEC-22: maks 12 gambar berlisensi + ilustrasi kode.
 

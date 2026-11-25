@@ -1,6 +1,6 @@
-// Logo Kardiologiku (DESIGN §17, DEC-23, DEC-35).
+// Logo Kardiologiku (DESIGN §17, DEC-23, DEC-37).
 // Dua tingkat: tanda vektor (buatan sendiri, dari docs/assets/logo/*.svg)
-// dan logo hero (gambar jantung hasil AI + jejak EKG Skia).
+// dan logo hero (satu gambar statis hasil AI: jantung + irama EKG nyatu).
 
 import { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
@@ -19,7 +19,6 @@ import { namaFont } from '../fonts';
 import { WARNA_TANDA_GELAP } from '../theme';
 import { useTema } from '../useTema';
 import { useReduceMotion } from '../useReduceMotion';
-import { JejakEkgSkia } from './JejakEkgSkia';
 
 const JANTUNG_D =
   'M40 62C14 44 10 24 24 16C32 12 38 17 40 23C42 17 48 12 56 16C70 24 66 44 40 62Z';
@@ -85,9 +84,9 @@ interface LogoHeroProps {
 }
 
 /**
- * Logo hero: jantung realistis (gambar hasil AI — lihat ATTRIBUTION.md)
- * + jejak EKG Skia yang melintasinya. Jantung berdenyut 1,00 → 1,03 sinkron
- * dengan lonjakan R (≈ 1 denyut per 0,9 dtk); berhenti saat reduceMotion.
+ * Logo hero: satu gambar statis hasil AI — jantung realistis dengan irama
+ * EKG menyatu di depannya (lihat ATTRIBUTION.md). Gambar berdenyut
+ * 1,00 → 1,03 (≈ 1 denyut per 0,9 dtk); berhenti saat reduceMotion.
  */
 export function LogoHero({
   tinggi = 200,
@@ -151,16 +150,6 @@ export function LogoHero({
           accessibilityLabel="Ilustrasi jantung"
         />
       </Animated.View>
-      <View
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: tinggi / 2 - 18,
-        }}
-      >
-        <JejakEkgSkia lebar={lebar} tinggi={36} />
-      </View>
     </View>
   );
 }
@@ -208,9 +197,9 @@ interface SplashProps {
 }
 
 /**
- * Splash (DESIGN §17.5, ≤ 1,6 dtk): jejak menulis (0–500 ms) → jantung
- * muncul + denyut pertama (400–900 ms) → wordmark (900–1300 ms) →
- * transisi fade (1300–1600 ms). reduceMotion: tampil statis 600 ms.
+ * Splash (DESIGN §17.5, ≤ 1,6 dtk): jantung muncul + denyut pertama
+ * (400–900 ms) → wordmark (900–1300 ms) → transisi fade (1300–1600 ms).
+ * reduceMotion: tampil statis 600 ms.
  */
 export function Splash({ onSelesai }: SplashProps) {
   const reduceMotion = useReduceMotion();

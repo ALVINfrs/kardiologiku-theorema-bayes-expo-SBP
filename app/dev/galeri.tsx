@@ -185,7 +185,7 @@ export default function Galeri() {
           <LogoMark ukuran={48} varian="mono" warna={tema.ink} />
         </View>
         <Text className="font-sans text-[15px] leading-[22px] text-ink">
-          Logo hero (gambar AI + jejak Skia + denyut):
+          Logo hero (gambar AI: jantung + EKG nyatu, + denyut):
         </Text>
         <LogoHero tinggi={200} />
         <Text className="font-sans text-[15px] leading-[22px] text-ink">

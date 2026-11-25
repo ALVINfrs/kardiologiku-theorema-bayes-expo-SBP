@@ -3,12 +3,6 @@ import { render, screen } from '@testing-library/react-native';
 import { LogoHero, LogoLockup, LogoMark, Splash } from '../components/Logo';
 import { usePengaturanGerak } from '../../store/pengaturan';
 
-// Skia tidak dimuat di Jest — jejak EKG Skia diganti stub.
-jest.mock('../components/JejakEkgSkia', () => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports -- require di dalam factory mock
-  const { View } = require('react-native');
-  return { JejakEkgSkia: () => <View testID="jejak-ekg-skia" /> };
-});
 jest.mock('expo-image', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- require di dalam factory mock
   const { View } = require('react-native');
@@ -42,10 +36,10 @@ describe('Logo (DESIGN §17)', () => {
     expect(screen.getAllByTestId('logo-mark')).toHaveLength(2);
   });
 
-  it('logo hero tampil: gambar jantung + jejak EKG', async () => {
+  it('logo hero tampil: satu gambar statis (jantung + EKG nyatu)', async () => {
     await render(<LogoHero />);
     expect(screen.getByTestId('logo-hero-gambar')).toBeTruthy();
-    expect(screen.getByTestId('jejak-ekg-skia')).toBeTruthy();
+    expect(screen.queryByTestId('jejak-ekg-skia')).toBeNull();
   });
 
   it('lockup menampilkan wordmark Kardiologiku', async () => {
