@@ -1,0 +1,1 @@
+{"expo":{"experiments":{"typedRoutes":true},"icon":"./assets/images/splash-icon.png","name":"Kardiologiku","orientation":"portrait","plugins":["expo-router",["expo-splash-screen",{"backgroundColor":"#FBF1EE","image":"./assets/images/splash-icon.png","imageWidth":76}]],"scheme":"kardiologiku","slug":"kardiologiku","userInterfaceStyle":"automatic","version":"1.0.0"}}
